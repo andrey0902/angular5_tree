@@ -1,0 +1,22 @@
+<p>
+  tree works!
+</p>
+<!--<div *ngFor="let tree of trees">
+  <app-item [category]="tree"
+  ></app-item>
+</div>-->
+
+<div  droppable (onDrop)="onDrop($event)" >
+  <app-list [tree]="tree"
+            *ngFor="let tree of newTrees"
+            draggable
+            [dragData]="tree">
+
+  </app-list>
+</div>
+<!--<div>
+  NEW
+  <pre>
+    {{categoriesTree | json}}
+  </pre>
+</div>-->

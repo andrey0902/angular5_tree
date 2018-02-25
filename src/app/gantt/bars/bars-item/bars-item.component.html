@@ -1,0 +1,32 @@
+<div class="gantt-bars-item"
+     (click)="onClick()"
+     [ngStyle]="{left: getStart() + 'px',
+     width: (getWidth() - 1) + 'px',
+     'background-color': bgColor(subTask.status)
+     }"
+     [ngClass]="{tooltip: options.showTooltip}"
+     appTooltipDirective
+     [position]="'top'"
+     [text]="prepareTooltip()"
+     [show]="options.showTooltip"
+>
+  <ng-container *ngIf="options.showProgress">
+    <p class="gantt-bars-perocent"
+       *ngIf="subTask?.percentComplete">
+      {{subTask.percentComplete + '%'}}
+    </p>
+    <div class="gantt-bars-completed-width"
+         *ngIf="subTask?.percentComplete"
+         [ngStyle]="{width: subTask.percentComplete + '%',
+         'background-color': bgColor(subTask.status, true)}"
+    >
+    </div>
+  </ng-container>
+<!--  <div class="gantt-tooltip"
+       *ngIf="options.showTooltip"
+  >
+    <p class="gantt-tooltip-text">
+      {{prepareTooltip()}}
+    </p>
+  </div>-->
+</div>

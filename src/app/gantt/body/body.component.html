@@ -1,0 +1,47 @@
+<div class="gantt-body-wrapper" (window:resize)="noResize($vent)">
+  <div class="header-month">
+    <div class="header-month-item" *ngFor="let month of spaceMonth" [ngStyle]="{width: calculateWidthMonth(month) + 'px'}" title="{{month | amLocale: locale | amDateFormat: 'MMMM YYYY'}}">
+      <p class="header-month-text">
+        {{month | amLocale: locale | amDateFormat: 'MMMM YYYY'}}
+      </p>
+    </div>
+    </div>
+  <div class="header-days">
+
+    <div class="header-days-item"
+         *ngFor="let day of days;"
+         appCellClick
+         [day]="day"
+         [ngStyle]="{width: getCellwidth() + 'px' }"
+         [ngClass]="{
+         weekend: isWeekend(day),
+         currentDay: isCurrendDay(day)
+         }"
+    >
+      <span>{{prepareDay(day)}}</span>
+    </div>
+  </div>
+  <div class="gantt-main-space">
+    <div class="row"
+         *ngFor="let row of project.tasks;  let first=first"
+    >
+      <div class="header-days-item"
+
+           *ngFor="let day of days"
+           appCellClick
+           [day]="day"
+           [ngClass]="{
+           'first-line': first,
+           weekend: isWeekend(day),
+           currentDay: isCurrendDay(day)
+           }"
+           [ngStyle]="{width: getCellwidth() + 'px' }"
+      >
+      </div>
+    </div>
+    <div class="gantt-bars">
+      <app-bars [tasks]="project.tasks"
+      ></app-bars>
+    </div>
+  </div>
+</div>

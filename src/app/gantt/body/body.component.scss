@@ -1,0 +1,104 @@
+.gantt {
+
+  &-main-space {
+    position: relative;
+  }
+}
+
+.header-month {
+  display: flex;
+
+
+  &-item {
+    white-space: nowrap; /* Отменяем перенос текста */
+    overflow: hidden; /* Обрезаем содержимое */
+    text-overflow: ellipsis; /* Многоточие */
+    height: 22px;
+    line-height: 20px;
+    flex-shrink: 0;
+    box-sizing: border-box;
+    text-align: center;
+    border-top: 1px solid #cecece;
+    border-right: 1px solid #cecece;
+    color: #454545;
+   /* background-color: #99a3ff;
+    border: 1px solid black;*/
+  }
+
+  &-item:last-child {
+    border-right: none;
+  }
+
+  &-text {
+    margin: 0;
+    line-height: 20px;
+  }
+
+  &-text:first-letter {
+    text-transform: capitalize;
+  }
+}
+
+.header-days {
+  display: flex;
+
+
+  &-item {
+    color: #454545;
+    flex-shrink: 0;
+    flex-grow: 1;
+    text-align: center;
+    height: 22px;
+    line-height: 20px;
+    box-sizing: border-box;
+    border-top: 1px solid #cecece;
+    border-bottom: 1px solid #cecece;
+    border-right: 1px solid #cecece;
+    font-size: 13px;
+    z-index: 12;
+
+    .body-text {
+      color: transparent;
+    }
+  }
+
+  &-item:last-child {
+    border-right: none;
+  }
+
+  &-item + &-item {
+   /* border-right: none;*/
+    border-left: none;
+  }
+  &-item.first-line {
+    border-top: none;
+  }
+
+}
+.row {
+  display: flex;
+ /* border-bottom: 1px solid transparent;*/
+
+
+}
+
+.row + .row .header-days-item {
+  border-top: none;
+}
+
+.gantt-bars {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+ /* background: rgba(205, 207, 72, 0.43);
+*/
+}
+.weekend {
+  background-color: #f5f5f5;
+}
+.currentDay {
+  background-color: #f7ffda;
+  border-bottom: 1px solid #cecece;
+}

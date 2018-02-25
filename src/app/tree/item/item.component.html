@@ -1,0 +1,28 @@
+<li>
+  {{category.title}}
+  <ng-container *ngIf="category?.children.length">
+    <ul class="children">
+      <app-item *ngFor="let item of category?.children"
+                [category]="item"
+      >
+      </app-item>
+    </ul>
+  </ng-container>
+</li>
+
+
+
+<!--
+<ul droppable (onDrop)="onVegetableDrop($event)">
+  <li draggable [dragData]="category">
+    {{category.title}}
+    <ng-container *ngIf="category?.children">
+      <ng-container *ngFor="let item of category.children ">
+        <app-item [category]="item"
+        ></app-item>
+      </ng-container>
+
+    </ng-container>
+  </li>
+</ul>
+-->
